@@ -1,0 +1,11 @@
+npm i dotenv express express-rate-limit cors body-parser bcrypt
+npm i sequelize sequelize-typescript mysql2
+npm i jsonwebtoken joi @joi/date moment moment-timezone
+npm i basic-auth express-prometheus-middleware prom-client
+
+npm i -D cross-env typescript ts-node @types/node
+npm i -D @types/express @types/cors @types/body-parser @types/bcrypt
+npm i -D @types/jsonwebtoken @types/express-prometheus-middleware @types/basic-auth
+npm i -D jest ts-jest @types/jest mockdate supertest @types/supertest @types/validator
+
+tsc --init
