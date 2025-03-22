@@ -5,5 +5,5 @@ Definitely there will be a lot of things that gonna be change in the future as t
 I do implement typescript but its still basic typescript, I'm still learning it.
 
 Things that I need to add in the future
-1. Unit test
+1. Testing
 2. Migration
