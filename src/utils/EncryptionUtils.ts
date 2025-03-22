@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-const SECRET = process.env.ED_SECRET as string || '';
+const SECRET = process.env.ED_SECRET as string || '1'.repeat(64);
 const ENCRYPTION_KEY = Buffer.from(SECRET, 'hex'); // 16, 24, or 32 bytes
 const IV_LENGTH = 16; // 16 bytes for AES
 
