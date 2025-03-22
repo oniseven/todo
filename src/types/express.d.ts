@@ -6,7 +6,7 @@ declare global {
     export interface Request {
       payload?: JwtPayload;
       userToken?: any;
-      userKey?: any;
+      // userKey?: any;
       validInput?: any;
     }
 

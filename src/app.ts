@@ -59,24 +59,27 @@ async function connectDatabases() {
   }
 }
 
-let server: any;
-connectDatabases().then(() => {
-  if (NODE_ENV !== "production") {
-    server = app.listen(PORT, () => {
-      console.info(`Server Http is running in ${NODE_ENV} on PORT ${PORT}`);
-    });
-  } else {
-    const credential = {
-      key: readFileSync("/etc/ssl/api/api_rsisjs_id.key"),
-      cert: readFileSync("/etc/ssl/api/api_rsisjs_id.crt"),
-      ca: readFileSync("/etc/ssl/api/api_rsisjs_id.ca-bundle.crt"),
-    };
-    server = https.createServer(credential, app);
-    server.listen(PORT, () => {
-      console.log(`Server Https is running in ${NODE_ENV} on PORT ${PORT}`);
-    });
-  }
-});
 
-export { app, connectDatabases };
-export default server;
+(async () => {
+  try {
+    let server: any;
+    await connectDatabases();
+    if (NODE_ENV !== "production") {
+      server = app.listen(PORT, () => {
+        console.info(`Server Http is running in ${NODE_ENV} on PORT ${PORT}`);
+      });
+    } else {
+      const credential = {
+        key: readFileSync("/etc/ssl/api/api_rsisjs_id.key"),
+        cert: readFileSync("/etc/ssl/api/api_rsisjs_id.crt"),
+        ca: readFileSync("/etc/ssl/api/api_rsisjs_id.ca-bundle.crt"),
+      };
+      server = https.createServer(credential, app);
+      server.listen(PORT, () => {
+        console.log(`Server Https is running in ${NODE_ENV} on PORT ${PORT}`);
+      });
+    }
+  } catch (error) {
+    console.log("🚀 ~ error:", error)
+  }
+})();

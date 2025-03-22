@@ -6,12 +6,7 @@ const RequestHandler = async (
   next: NextFunction
 ) => {
   const headers = req.headers;
-  req.userKey = headers["user-key"];
-  // req.biometricToken = headers["user-cred"];
-  // req.device = {
-  //   name: headers["user-device"],
-  //   modelName: headers["user-model-name"],
-  // };
+  // req.userKey = headers["user-key"];
 
   next();
 };
