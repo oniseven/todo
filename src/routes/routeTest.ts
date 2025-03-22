@@ -17,8 +17,4 @@ routes.get("/custom-error-no-info", (req: Request, res: Response) => {
   throw new CustomException("Another custom error", 400);
 });
 
-routes.get("/", (req: Request, res: Response) => {
-  res.status(200).send("OK");
-});
-
 export default routes;
