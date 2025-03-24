@@ -5,7 +5,7 @@ import PrometheusHandler from "./PrometheusHandler";
 
 export default function setupMetrics(app: Application): void {
   // Basic authentication for metrics
-  app.use('/metrics', BasicAuthHandler);
+  app.use("/metrics", BasicAuthHandler);
 
   // Use express-prometheus-middleware
   app.use(
@@ -13,8 +13,6 @@ export default function setupMetrics(app: Application): void {
       metricsPath: "/metrics",
       collectDefaultMetrics: true,
       requestDurationBuckets: [0.1, 0.5, 1, 1.5, 2],
-      
-      
     })
   );
 
