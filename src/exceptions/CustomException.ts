@@ -4,7 +4,7 @@ export class CustomException extends Error {
 
   constructor(
     message: string,
-    status: number,
+    status: number = 500,
     additionalInfo?: string | Record<string, any>
   ) {
     super(message);
