@@ -55,8 +55,8 @@ describe("JWTValidation Test", () => {
     expect(verify).toHaveBeenCalledWith(token, "secret");
     expect(next).toHaveBeenCalled();
     expect(next).not.toHaveBeenCalledWith(error);
-    // expect(req.payload).toEqual(payload);
-    // expect(req.userToken).toBe(token);
+    expect(req.payload).toEqual(payload);
+    expect(req.userToken).toBe(token);
   });
 
   it("should throw UnauthorizeException when token is missing", () => {
@@ -68,7 +68,7 @@ describe("JWTValidation Test", () => {
     expect(next).toHaveBeenCalledWith(error);
     expect(verify).not.toHaveBeenCalled();
     expect(res.status).not.toHaveBeenCalled();
-    // expect(res.noData).not.toHaveBeenCalled();
+    expect(res.noData).not.toHaveBeenCalled();
   });
 
   it("should return 401 if the token is expired", () => {
@@ -86,7 +86,7 @@ describe("JWTValidation Test", () => {
 
     expect(res.status).toHaveBeenCalledWith(401);
     expect(next).not.toHaveBeenCalled();
-    // expect(res.noData).toHaveBeenCalledWith(false, 'Credential is expired!');
+    expect(res.noData).toHaveBeenCalledWith(false, 'Credential is expired!');
   });
 
   it("should call next with error if the toke is invalid", () => {
