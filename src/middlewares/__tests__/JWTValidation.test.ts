@@ -43,7 +43,7 @@ describe("JWTValidation Test", () => {
 
   it("should call next if the token is valid", () => {
     const token = "this.is.valid.token";
-    const payload = { id: 1, name: "John", norm: "008123" };
+    const payload = { id: 1, username: "John" };
     const error = new UnauthorizeException("Missing or Invalid Credential!");
 
     (verify as jest.Mock).mockReturnValueOnce(payload);
