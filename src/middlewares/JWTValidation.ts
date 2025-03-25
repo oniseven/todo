@@ -5,7 +5,7 @@ import { UnauthorizeException } from "../exceptions/UnauthorizeException";
 import { JwtPayload } from "../types";
 
 const SECRET = process.env.JWT_ENCRYPTION || "";
-const ISSUER = process.env.JWT_ISSUER || "";
+// const ISSUER = process.env.JWT_ISSUER || "";
 
 export const JWTValidation = async (
   req: Request,
@@ -26,7 +26,8 @@ export const JWTValidation = async (
     next();
   } catch (error) {
     if (error instanceof TokenExpiredError) {
-      return res.status(401).noData(false, "Credential is expired!");
+      res.status(401).noData(false, "Credential is expired!");
+      return;
     } else {
       next(error);
     }
