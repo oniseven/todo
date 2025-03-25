@@ -9,6 +9,9 @@ export const SUCCESS_MESSAGE = {
 };
 
 export const ERROR_MESSAGE = {
+  AUTH: {
+    FAILED: "Username / Password Tidak Sesuai!"
+  },
   TODOS: {
     CREATED: "Todo gagal di buat",
     DELETED: "Todo gagal di hapus",
