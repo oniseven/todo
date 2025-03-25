@@ -1,7 +1,6 @@
 export interface JwtPayload {
   id: string,
-  name: string,
-  norm: string,
+  username: string,
 }
 
 export interface ResponseMetadata {
