@@ -9,6 +9,7 @@ import {
   Unique,
 } from "sequelize-typescript";
 import bcrypt from "bcrypt";
+import { encrypt } from "../utils/EncryptionUtils";
 
 const SALT_ROUNDS = Number(process.env.SALTROUNDS || 10);
 
@@ -28,6 +29,14 @@ export class User extends Model {
     type: DataType.STRING,
   })
   "password": string;
+
+  @Column({
+    type: DataType.VIRTUAL,
+    get(this: User) {
+      return encrypt(this.id.toString())
+    }
+  })
+  "encryptedID": string;
 
   @BeforeCreate
   static hashPasswordBeforeCreate(user: User) {
