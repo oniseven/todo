@@ -10,6 +10,9 @@ import {
 } from "../controllers/todoController";
 import PrometheusHandler from "../middlewares/PrometheusHandler";
 import { TodoData, validateCreateTodo, validateUpdateTodo } from "../validations/todoValidation";
+import authController from "../controllers/authController";
+import authValidation from "../validations/authValidation";
+import { JWTValidation } from "../middlewares/JWTValidation";
 
 const routes = Router();
 
@@ -36,6 +39,9 @@ routes.get("/metrics", async (req, res) => {
   }
 });
 
+routes.post("/auth", authValidation, AsyncHandler(authController));
+
+routes.use(JWTValidation);
 routes.get("/todos", AsyncHandler(getAllTodos));
 routes.post("/todos", validateCreateTodo, AsyncHandler(createTodo));
 routes.put("/todos/:id", validateUpdateTodo, AsyncHandler(updateTodo));
