@@ -31,7 +31,8 @@ const authController: RequestHandler = async (req, res) => {
     id: user.encryptedID,
     username: user.username,
   };
-  const token = jwt.sign(payload, config.JWT_SECRET, {
+  
+  const token = jwt.sign(payload, config.JWT_SECRET as any, {
     expiresIn: config.JWT_EXPIRED,
   });
 

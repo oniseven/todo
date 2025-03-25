@@ -1,4 +1,5 @@
 import path from "path";
+import ms, { StringValue } from "ms";
 import { SequelizeOptions } from "sequelize-typescript";
 
 interface AppConfig {
@@ -9,6 +10,8 @@ interface AppConfig {
     test: SequelizeOptions;
     development: SequelizeOptions;
   },
+  JWT_SECRET: string;
+  JWT_EXPIRED: number;
   [key: string]: any;
 };
 
@@ -55,7 +58,7 @@ const config: AppConfig = {
     }
   },
   JWT_SECRET: process.env.JWT_ENCRYPTION || "secret",
-  JWT_EXPIRED: process.env.JWT_EXPIRATION || "1h",
+  JWT_EXPIRED: ms(process.env.JWT_EXPIRATION as StringValue || '1h'),
 };
 
 export const getDatabaseConfig = (config: AppConfig) => {
